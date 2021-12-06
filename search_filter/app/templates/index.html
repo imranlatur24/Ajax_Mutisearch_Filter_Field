@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <title>Multi search</title>
+    <div class="container-fluid text-center">
+        <h2 class="text-justify text-center">Implementing Multiple Search Functionality with Radio Buttons and Dropdown Menu Title</h2>
+        <h4 class="text-md text-center">technologies used are: javascript,html5,css2,bootstrap4,jquery,mysql,django</h4>
+    </div>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+</head>
+<body>
+    <div class="container-fluid">
+        <form method="post" class="form-group">
+        {% csrf_token %}
+            <div class="custom-control custom-radio text-center"><hr>
+                <div class="col-md-6 text-right">
+                    <input type="radio" value="Female" name="gender">Female
+                    <input type="radio" value="Male" name="gender">Male
+                </div>
+
+            <div class="dropdown col-md-6 text-left">
+                    <select name="occupation" class="form-control">
+                        <option selected disabled=true>--Select Occupation--</option>
+                        <option>Developer</option>
+                        <option>Tester</option>
+                </select>
+            </div>
+            </div>
+            <div class="container my-3 bg-light">
+                <div class="col-md-12 text-center"><br>
+                    <input type="submit" class="btn btn-primary text-center" value="Search">
+                </div>
+            </div></hr><br>
+            <table border="1" class="table table-hover">
+                <tr>
+                    <th>Employee Name</th>
+                    <th>Gender</th>
+                    <th>Occupation</th>
+                    <th>Salary</th>
+                </tr>
+                {% for e in emp %}
+                <tr>
+                    <td>{{e.emp_name}}</td>
+                    <td>{{e.gender}}</td>
+                    <td>{{e.occupation}}</td>
+                    <td>{{e.salary}}</td>
+                </tr>
+                {% endfor %}
+            </table>
+        </form>
+    </div>
+</body>
+</html>
